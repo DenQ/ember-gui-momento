@@ -4,8 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-gui-momento',
     environment: environment,
-    //baseURL: '/',
-    baseURL: '/ember-gui-momento/dist/',
+    baseURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -42,7 +41,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/ember-gui-momento/dist/';
   }
 
   return ENV;
