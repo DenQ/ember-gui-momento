@@ -48,6 +48,35 @@ define('ember-gui-momento/components/gt-momento', ['exports', 'ember'], function
     });
 
 });
+define('ember-gui-momento/controllers/application', ['exports', 'ember'], function (exports, Ember) {
+
+    'use strict';
+
+    exports['default'] = Ember['default'].Controller.extend({
+        'current-time': window.moment().unix(),
+        interval: [32, 34, 36, 38, 40, 45, 99, 120, 150, 155, 160, 200, 230, 1800, 3600, 36000, 750000, 1750000, 17500000, 155000000],
+        pull: [],
+        init: function init() {
+            this._super();
+            var that = this;
+            this.get('interval').forEach(function (item) {
+                that.PushTime(item);
+            });
+        },
+        PushTime: function PushTime(interval) {
+            var currentTime = this.get('current-time');
+            var deliveryTime = currentTime - interval;
+            var obj = {
+                'time': deliveryTime,
+                'component-string': '{{gt-momento datetime=' + deliveryTime + '}}'
+            };
+            this.get('pull').pushObject(obj);
+            console.log(currentTime, deliveryTime, obj);
+        }
+
+    });
+
+});
 define('ember-gui-momento/controllers/array', ['exports', 'ember'], function (exports, Ember) {
 
 	'use strict';
@@ -127,7 +156,7 @@ define('ember-gui-momento/initializers/gt-momento', ['exports', 'ember'], functi
     });
 
     function Init(container) {
-        container.register('service:moment-interval', ServiceMomento, {
+        container.register('service:moment-interval', ServiceMomento.create(), {
             instantiate: false,
             singleton: true
         });
@@ -176,6 +205,68 @@ define('ember-gui-momento/templates/application', ['exports'], function (exports
   'use strict';
 
   exports['default'] = Ember.HTMLBars.template((function() {
+    var child0 = (function() {
+      return {
+        meta: {
+          "revision": "Ember@1.13.5",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 5,
+              "column": 4
+            },
+            "end": {
+              "line": 10,
+              "column": 4
+            }
+          },
+          "moduleName": "ember-gui-momento/templates/application.hbs"
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("        ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1,"class","row");
+          var el2 = dom.createTextNode("\n            ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2,"class","col-xs-6 img-thumbnail");
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n            ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2,"class","col-xs-6 img-thumbnail");
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [1]);
+          var morphs = new Array(2);
+          morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]),0,0);
+          morphs[1] = dom.createMorphAt(dom.childAt(element0, [3]),0,0);
+          return morphs;
+        },
+        statements: [
+          ["inline","gt-momento",[],["datetime",["subexpr","@mut",[["get","this.time",["loc",[null,[7,70],[7,79]]]]],[],[]]],["loc",[null,[7,48],[7,81]]]],
+          ["content","this.component-string",["loc",[null,[8,48],[8,73]]]]
+        ],
+        locals: [],
+        templates: []
+      };
+    }());
     return {
       meta: {
         "revision": "Ember@1.13.5",
@@ -186,7 +277,7 @@ define('ember-gui-momento/templates/application', ['exports'], function (exports
             "column": 0
           },
           "end": {
-            "line": 4,
+            "line": 14,
             "column": 0
           }
         },
@@ -199,12 +290,19 @@ define('ember-gui-momento/templates/application', ['exports'], function (exports
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("h2");
         dom.setAttribute(el1,"id","title");
-        var el2 = dom.createTextNode("Welcome to Ember");
+        var el2 = dom.createTextNode("Demo ember-gui-momento");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\nTable have realtime changes:\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","container-fluid");
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
@@ -216,16 +314,16 @@ define('ember-gui-momento/templates/application', ['exports'], function (exports
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var morphs = new Array(2);
-        morphs[0] = dom.createMorphAt(fragment,2,2,contextualElement);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [2]),1,1);
         morphs[1] = dom.createMorphAt(fragment,4,4,contextualElement);
         return morphs;
       },
       statements: [
-        ["inline","gt-momento",[],["datetime",1440785099],["loc",[null,[2,0],[2,34]]]],
-        ["content","outlet",["loc",[null,[3,0],[3,10]]]]
+        ["block","each",[["get","pull",["loc",[null,[5,12],[5,16]]]]],[],0,null,["loc",[null,[5,4],[10,13]]]],
+        ["content","outlet",["loc",[null,[13,0],[13,10]]]]
       ],
       locals: [],
-      templates: []
+      templates: [child0]
     };
   }()));
 
@@ -299,6 +397,16 @@ define('ember-gui-momento/tests/components/gt-momento.jshint', function () {
   module('JSHint - components');
   test('components/gt-momento.js should pass jshint', function() { 
     ok(true, 'components/gt-momento.js should pass jshint.'); 
+  });
+
+});
+define('ember-gui-momento/tests/controllers/application.jshint', function () {
+
+  'use strict';
+
+  module('JSHint - controllers');
+  test('controllers/application.js should pass jshint', function() { 
+    ok(false, 'controllers/application.js should pass jshint.\ncontrollers/application.js: line 30, col 24, Missing semicolon.\ncontrollers/application.js: line 41, col 10, Missing semicolon.\n\n2 errors'); 
   });
 
 });
@@ -539,6 +647,32 @@ define('ember-gui-momento/tests/test-helper.jshint', function () {
   });
 
 });
+define('ember-gui-momento/tests/unit/controllers/application-test', ['ember-qunit'], function (ember_qunit) {
+
+  'use strict';
+
+  ember_qunit.moduleFor('controller:application', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  // Replace this with your real tests.
+  ember_qunit.test('it exists', function (assert) {
+    var controller = this.subject();
+    assert.ok(controller);
+  });
+
+});
+define('ember-gui-momento/tests/unit/controllers/application-test.jshint', function () {
+
+  'use strict';
+
+  module('JSHint - unit/controllers');
+  test('unit/controllers/application-test.js should pass jshint', function() { 
+    ok(true, 'unit/controllers/application-test.js should pass jshint.'); 
+  });
+
+});
 define('ember-gui-momento/tests/unit/initializers/gt-momento-test', ['ember', 'ember-gui-momento/initializers/gt-momento', 'qunit'], function (Ember, gt_momento, qunit) {
 
   'use strict';
@@ -602,7 +736,7 @@ catch(err) {
 if (runningTests) {
   require("ember-gui-momento/tests/test-helper");
 } else {
-  require("ember-gui-momento/app")["default"].create({"name":"ember-gui-momento","version":"0.0.0+87b0643d"});
+  require("ember-gui-momento/app")["default"].create({"name":"ember-gui-momento","version":"0.0.0+edf9f2d2"});
 }
 
 /* jshint ignore:end */

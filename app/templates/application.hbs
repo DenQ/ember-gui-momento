@@ -1,3 +1,13 @@
-<h2 id="title">Welcome to Ember</h2>
-{{gt-momento datetime=1440785099}}
+<h2 id="title">Demo ember-gui-momento</h2>
+Table have realtime changes:
+<div class="container-fluid">
+
+    {{#each pull}}
+        <div class="row">
+            <div class="col-xs-6 img-thumbnail">{{gt-momento datetime=this.time}}</div>
+            <div class="col-xs-6 img-thumbnail">{{this.component-string}}</div>
+        </div>
+    {{/each}}
+
+</div>
 {{outlet}}

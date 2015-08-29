@@ -21,7 +21,7 @@ var ServiceMomento = Ember.Object.extend({
 });
 
 function Init(container) {
-    container.register('service:moment-interval', ServiceMomento, {
+    container.register('service:moment-interval', ServiceMomento.create(), {
         instantiate: false,
         singleton: true
     });
