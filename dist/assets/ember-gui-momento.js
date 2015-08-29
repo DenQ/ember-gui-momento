@@ -406,7 +406,7 @@ define('ember-gui-momento/tests/controllers/application.jshint', function () {
 
   module('JSHint - controllers');
   test('controllers/application.js should pass jshint', function() { 
-    ok(false, 'controllers/application.js should pass jshint.\ncontrollers/application.js: line 30, col 24, Missing semicolon.\ncontrollers/application.js: line 41, col 10, Missing semicolon.\n\n2 errors'); 
+    ok(true, 'controllers/application.js should pass jshint.'); 
   });
 
 });
@@ -736,7 +736,7 @@ catch(err) {
 if (runningTests) {
   require("ember-gui-momento/tests/test-helper");
 } else {
-  require("ember-gui-momento/app")["default"].create({"name":"ember-gui-momento","version":"0.0.0+edf9f2d2"});
+  require("ember-gui-momento/app")["default"].create({"name":"ember-gui-momento","version":"0.0.0+fe7cc954"});
 }
 
 /* jshint ignore:end */

@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
     pull: [],
     init: function() {
         this._super();
-        var that = this
+        var that = this;
         this.get('interval').forEach(function(item){
             that.PushTime(item);
         });
@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
         var obj = {
             'time': deliveryTime,
             'component-string': '{{gt-momento datetime=' + deliveryTime + '}}'
-        }
+        };
         this.get('pull').pushObject(obj);
         console.log(currentTime, deliveryTime, obj);
     }
