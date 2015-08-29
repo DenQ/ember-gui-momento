@@ -736,7 +736,7 @@ catch(err) {
 if (runningTests) {
   require("ember-gui-momento/tests/test-helper");
 } else {
-  require("ember-gui-momento/app")["default"].create({"name":"ember-gui-momento","version":"0.0.0+f097f539"});
+  require("ember-gui-momento/app")["default"].create({"name":"ember-gui-momento","version":"0.0.0+d7a07e03"});
 }
 
 /* jshint ignore:end */

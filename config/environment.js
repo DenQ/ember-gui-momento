@@ -20,7 +20,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.baseURL = '/'
+    //ENV.baseURL = '/'
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -41,7 +41,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.baseURL = '/ember-gui-momento/dist/';
+    //ENV.baseURL = '/ember-gui-momento/dist/';
   }
 
   return ENV;
