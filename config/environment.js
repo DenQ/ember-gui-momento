@@ -4,7 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-gui-momento',
     environment: environment,
-    baseURL: '/',
+    //baseURL: '/',
+    baseURL: '/ember-gui-momento/dist/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -30,6 +31,7 @@ module.exports = function(environment) {
   if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/';
+    //ENV.locationType = 'none';
     ENV.locationType = 'none';
 
     // keep test console output quieter
