@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
     GetDateTime:function() {
         var a = this.get('service-moment.current-time');
-        var b = moment( this.get('datetime') * 1000 );
+        var b = window.moment( this.get('datetime') * 1000 );
         return b.from(a);
     }.property('service-moment.current-time')
 });

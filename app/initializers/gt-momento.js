@@ -1,12 +1,14 @@
+import Ember from 'ember';
+
 var ServiceMomento = Ember.Object.extend({
     'current-time': 1,
     'step-interval': 1000,
     init: function(...etc) {
+        this._super(...etc);
         Ember.debug('Start ServiceMomento...');
         this.Run();
-        return
     },
-    Run:function(){
+    Run:function() {
         var that = this;
         this.SetCurrentTime();
         setInterval(function() {
@@ -14,13 +16,12 @@ var ServiceMomento = Ember.Object.extend({
         }, this.get('step-interval'));
     },
     SetCurrentTime: function() {
-        this.set('current-time', moment());
-        return
+        this.set('current-time', window.moment());
     }
 });
 
-function Init(container, application) {
-    container.register('service:moment-interval', ServiceMomento.create(), {
+function Init(container) {
+    container.register('service:moment-interval', ServiceMomento, {
         instantiate: false,
         singleton: true
     });
@@ -28,7 +29,5 @@ function Init(container, application) {
 
 export default {
     name: 'gt-momento',
-    initialize: function (container, application) {
-        Init(container, application);
-    }
+    initialize: Init
 };
