@@ -1,8 +1,8 @@
 {
   "name": "ember-gui-momento",
-  "version": "0.0.0",
-  "description": "Small description for ember-gui-momento goes here",
-  "private": true,
+  "version": "0.0.1",
+  "description": "Ember gui momento is component for visible time posting on realtime",
+  "private": false,
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -12,11 +12,19 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "keywords": [
+    "ember-addon",
+    "gui",
+    "moment",
+    "moment js",
+    "time",
+    "datetime"
+  ],
+  "repository": "https://github.com/DenQ/ember-gui-momento.git",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "DenQ",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
@@ -37,5 +45,8 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.3"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "ember-addon": {
+    "demoURL": "http://denq.github.io/ember-gui-momento/dist/"
+  }
 }
