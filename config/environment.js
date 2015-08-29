@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-gui-momento',
     environment: environment,
-    baseURL: '/',
+    baseURL : '/ember-gui-momento/dist/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -20,6 +20,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.baseURL = '/'
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -29,7 +30,6 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     //ENV.locationType = 'none';
     ENV.locationType = 'none';
 
